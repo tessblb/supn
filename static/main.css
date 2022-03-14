@@ -1,0 +1,13 @@
+.queue {
+  display: inline-flex;
+  gap: 5px;
+  flex-direction: row-reverse;
+}
+
+.box {
+  background: #dae;
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+}

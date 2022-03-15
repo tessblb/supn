@@ -13,7 +13,9 @@ const enqueue = async (el) => {
 const dequeue = async (el) => {
     el.disabled = true;
     const res = await fetch('./dequeue');
+    const prevItems = Array.from(document.querySelectorAll('.queue .box')).map((e) => e.innerText);
     const items = await res.json();
+    if (JSON.stringify(items) !== JSON.stringify(prevItems.slice(1))) return;
     await renderDequeue(items);
     el.disabled = false;
 };

@@ -21,6 +21,14 @@
     animation: dequeue 1s;
 }
 
+hr {
+    border: none;
+    height: 8px;
+    /* Set the hr color */
+    color: #999; /* old IE */
+    background-color: #999; /* Modern Browsers */
+}
+
 @keyframes enqueue {
     0% {
         transform: translateX(-100px);

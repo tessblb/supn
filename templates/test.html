@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .conteiner {
+                display: inline-flex;
+                gap: 5px;
+                flex-direction: row-reverse;
+            }
+
+            .conteiner div {
+                width: 100px;
+                height: 100px;
+                background: #62a;
+            }
+
+            .conteiner.enqueue {
+                animation: enqueue 2s;
+            }
+
+            @keyframes enqueue {
+                0% {
+                    transform: translateX(-100px);
+                }
+                100% {
+                    transform: translateX(0px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="conteiner"></div>
+        <script>
+            const divs = ['A', 'B', 'C'];
+            const el = document.querySelector('.conteiner');
+            const renderDiv = (e) => {
+                const div = document.createElement('div');
+                div.innerText = e;
+                el.appendChild(div);
+            };
+            const appendDiv = (e) => {
+                const div = document.createElement('div');
+                div.className = 'state1';
+                div.innerText = e;
+                el.classList.add('enqueue');
+                el.appendChild(div);
+            };
+
+            divs.forEach(renderDiv);
+            setTimeout(() => appendDiv('D'), 500);
+        </script>
+    </body>
+</html>

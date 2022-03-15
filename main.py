@@ -1,28 +1,23 @@
 from flask import Flask, request, render_template
-import json, time
+import json
+from server.queue import queue, enqueue, dequeue
 
 app = Flask(__name__)
 
-my_queue = ["A", "B", "C"]
+title="Antonio's Linear Data Structure"
 
 @app.route('/', methods=['GET'])
 def index():
-  return render_template("index.html", my_queue=my_queue)
+  return render_template("index.html", my_queue=queue, title=title)
 
 @app.route('/enqueue', methods=['GET'])
-def enqueue():
+def enqueueRoute():
   item = request.args.get('item')
-  if item:
-    my_queue.append(item)
-  return json.dumps(my_queue)
-
+  return json.dumps(enqueue(item))
 
 @app.route('/dequeue', methods=['GET'])
-def dequeue():
-  print("dequeue...")
-  if my_queue != []:
-    my_queue.pop(0)
-  return json.dumps(my_queue)
+def dequeueRoute():
+  return json.dumps(dequeue())
 
 if __name__ == '__main__':
   app.config['TEMPLATES_AUTO_RELOAD'] = True

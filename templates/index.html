@@ -5,17 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='inputs.css')}}" />
         <script src="{{ url_for('static', filename='main.js')}}"></script>
         <title>Document</title>
     </head>
     <body>
-        <h1>Hello</h1>
+        <h1>{{title}}</h1>
         <div>
-            <input type="button" value="enqueue" onclick="enqueue()" />
+            <input type="button" value="enqueue" onclick="enqueue(this)" />
             <input type="text" name="item" />
         </div>
         <div>
-            <input type="button" value="dequeue" onclick="dequeue()" />
+            <input type="button" value="dequeue" onclick="dequeue(this)" />
         </div>
         <hr />
         <div class="queue">

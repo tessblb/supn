@@ -1,11 +1,7 @@
-queue = ['A', 'B', 'C']
+queue = []
 
 def enqueue(item):
-  if item:
-    queue.append(item)
-  return queue
+  pass
 
 def dequeue():
-  if queue != []:
-    queue.pop(0)
-  return queue
+  pass

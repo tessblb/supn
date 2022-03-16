@@ -4,7 +4,7 @@ from server.queue import queue, enqueue, dequeue
 
 app = Flask(__name__)
 
-title="Antonio's Linear Data Structure"
+title="FIFO Data Structure"
 
 @app.route('/', methods=['GET'])
 def index():

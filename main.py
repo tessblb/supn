@@ -5,6 +5,10 @@ from server.tree import tree
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def index():
+  return render_template("index.html", my_queue=queue, title="AA-1 Home Page")
+
 @app.route('/tree', methods=['GET'])
 def treeRoute():
   title="Tree Data Structure"

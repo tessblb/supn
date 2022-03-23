@@ -1,14 +1,27 @@
 from flask import Flask, request, render_template
 import json
 from server.queue import queue, enqueue, dequeue
+from server.tree import tree
 
 app = Flask(__name__)
 
-title="FIFO Data Structure"
-
 @app.route('/', methods=['GET'])
 def index():
-  return render_template("index.html", my_queue=queue, title=title)
+  return render_template("index.html", my_queue=queue, title="AA-1 Home Page")
+
+@app.route('/tree', methods=['GET'])
+def treeRoute():
+  title="Tree Data Structure"
+  return render_template("tree.html", title=title)
+
+@app.route('/getTree', methods=['GET'])
+def getTreeRoute():
+  return tree
+
+@app.route('/queue', methods=['GET'])
+def queueRoute():
+  title="FIFO Data Structure"
+  return render_template("queue.html", my_queue=queue, title=title)
 
 @app.route('/enqueue', methods=['GET'])
 def enqueueRoute():

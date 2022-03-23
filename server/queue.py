@@ -1,7 +1,12 @@
 queue = []
 
 def enqueue(item):
-  pass
+  queue.append(item)
+  return queue
 
 def dequeue():
-  pass
+  if queue == []:
+    return queue
+  queue.pop(0)
+  return queue
+

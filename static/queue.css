@@ -1,0 +1,48 @@
+.queue {
+    display: inline-flex;
+    gap: 5px;
+    flex-direction: row-reverse;
+    transition-duration: 500ms;
+}
+
+.box {
+    background: #dae;
+    height: 100px;
+    width: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.queue.enqueue {
+    animation: enqueue 1s;
+}
+
+.box.dequeue {
+    animation: dequeue 1s;
+}
+
+hr {
+    border: none;
+    height: 8px;
+    /* Set the hr color */
+    color: #999; /* old IE */
+    background-color: #999; /* Modern Browsers */
+}
+
+@keyframes enqueue {
+    0% {
+        transform: translateX(-100px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes dequeue {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(2000px);
+    }
+}

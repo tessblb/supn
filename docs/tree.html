@@ -241,7 +241,6 @@
     get_leaves(tree)
                     </pre>
                 </div>
-
                 <div id="">
                     <h2>Test if the root of a tree is a leaf</h2>
                     <pre>
@@ -307,6 +306,28 @@
                     lf=[]
                     print("nombre de feuilles :",feuilles(tree,lf))
                     print(lf)
+                    </pre>
+                </div>
+                <div id="create-tree">
+                    <h2>Python program to create a tree</h2>
+                    <pre>
+                        # The python program should have at least two functions "create_node" and "add_node".
+                        # The function "create_node" takes in as input a value and returns a tree (tree node) as a list of two elements [ value, [ ] ]. The function "add_node" takes in as inputs a node and a tree and it returns a new tree.
+                        
+                        def create_node(data):
+                          return [data, []]
+                        
+                        def add_node(node, tree):
+                          tree_children = tree[1]
+                          tree_children.append(node)
+                          return tree
+                        
+                        ceo_node = create_node("CEO")
+                        print("ceo_node", ceo_node)
+                        
+                        cto_node = create_node("CTO")
+                        tree = add_node(cto_node, ceo_node)
+                        print("tree", tree)
                     </pre>
                 </div>
             </details>

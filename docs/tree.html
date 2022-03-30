@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>General Trees</title>
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="stylesheet" href="./collapse.css" />
+    </head>
+    <body>
+        <article id="introduction">
+            <details>
+                <summary>Trees Definition</summary>
+                <h2>Introduction</h2>
+                <p>
+                    Tree structures allow us to implement algorithms much faster than when using linear data structures,
+                    such as arrays or linked lists. Trees also provide a natural organization for data, and consequently
+                    have become ubiquitous structures in file systems, graphical user interfaces, databases, websites,
+                    and many other computer systems.
+                </p>
+                <p>
+                    A tree is an abstract data type that stores elements hierarchically. With the exception of the top
+                    element, each element in a tree has a parent element and zero or more children elements. A tree is
+                    usually visualized by placing elements inside ovals or rectangles, and by drawing the connections
+                    between parents and children with straight lines.
+                </p>
+                <h2>Formal Tree Definition</h2>
+                <p>
+                    Formally, we define a tree T as a set of nodes storing elements such that the nodes have a
+                    parent-child relationship that satisfies the following properties:
+                </p>
+                <ul>
+                    <li>If T is non-empty, it has a special node, called the root of T , that has no parent.</li>
+                    <li>
+                        Each node v of T different from the root has a unique parent node w; every node with parent w is
+                        a child of w.
+                    </li>
+                    <li>
+                        Two nodes that are children of the same parent are siblings. A node v is external if v has no
+                        children. A node v is internal if it has one or more children. External nodes are also known as
+                        leaves.
+                    </li>
+                </ul>
+            </details>
+        </article>
+        <article id="terminology">
+            <details>
+                <summary>Tree Terminology</summary>
+                <div>
+                    <h2>Root</h2>
+                    <img src="./images/root.png" alt="" />
+                    <p></p>
+                </div>
+                <div>
+                    <h2>edge</h2>
+                    <img src="./images/edge.png" alt="" />
+                    <p></p>
+                </div>
+                <div>
+                    <h2>parent</h2>
+                    <img src="./images/parent.png" alt="" />
+                    <p></p>
+                </div>
+                <div>
+                    <h2>Child</h2>
+                    <img src="./images/child.png" alt="" />
+                    <p></p>
+                </div>
+                <div>
+                    <h2>Siblings</h2>
+                    <p>
+                        In a tree data structure, nodes which belong to same Parent are called as SIBLINGS. In simple
+                        words, the nodes with the same parent are called Sibling nodes.
+                    </p>
+                    <img src="./images/siblings.png" alt="" />
+                </div>
+                <div>
+                    <h2>Leaf nodes</h2>
+                    <img src="./images/leaf.png" alt="" />
+                </div>
+                <div>
+                    <h2>Internal nodes</h2>
+                    <img src="./images/internal.png" alt="" />
+                </div>
+                <div>
+                    <h2>Degree</h2>
+                    <img src="./images/degree.png" alt="" />
+                </div>
+                <div id="level">
+                    <h2>Level</h2>
+                    <p>
+                        In a tree data structure, the root node is said to be at Level 0 and the children of root node
+                        are at Level 1 and the children of the nodes which are at Level 1 will be at Level 2 and so
+                        on...
+                    </p>
+                    <img src="./images/levels.png" alt="" />
+                </div>
+                <div id="height">
+                    <h2>height</h2>
+                    <p>
+                        In a tree data structure, the total number of edges from leaf node to a particular node in the
+                        longest path is called as HEIGHT of that Node. In a tree, height of the root node is said to be
+                        height of the tree. In a tree, height of all leaf nodes is '0'.
+                    </p>
+                    <img src="./images/height.png" alt="" />
+                </div>
+                <div>
+                    <h2>depth</h2>
+                    <img src="./images/depth.png" alt="" />
+                </div>
+                <div>
+                    <h2>path</h2>
+                    <img src="./images/path.png" alt="" />
+                </div>
+                <div>
+                    <h2>subtree</h2>
+                    <img src="./images/subtree.png" alt="" />
+                </div>
+                <div>
+                    <h2>The size of a tree</h2>
+                    <p>
+                        The size of a tree is its number of nodes (leaves or not). Example: The following tree is of
+                        size 6.
+                    </p>
+                    <pre>
+                        #         R
+                        #       / | \
+                        #     A   B  C
+                        #    / \
+                        #   D   E
+                    </pre>
+                </div>
+            </details>
+        </article>
+        <article id="tree-traversal">
+            <details>
+                <summary>Tree traversal algorithm</summary>
+                <div>
+                    <p>Tree traversal algorithms are used to explore nodes.</p>
+
+                    <img src="images/tree-traversal.jpg" alt="" />
+                </div>
+                <div>
+                    <h2>Depth First Search (DFS)</h2>
+                    <p>
+                        The order in which the nodes are visited during a tree DFS traversal can be easily determined by
+                        imagining there is a “flag” attached to each node, as follows:
+                    </p>
+                    <img src="images/dfs.jpg" alt="" />
+                </div>
+            </details>
+        </article>
+        <article id="list-rapresentation">
+            <details>
+                <summary>Tree Implementation</summary>
+                <div>
+                    <h2>Tree List Rapresentation</h2>
+                    <p>
+                        In this representation, we use two types of nodes one for representing the node with data called
+                        'data node' and another for representing only references called 'reference node'. We start with
+                        a 'data node' from the root node in the tree. Then it is linked to an internal node through a
+                        'reference node' which is further linked to any other node directly. This process repeats for
+                        all the nodes in the tree. The above example tree can be represented using List representation
+                        as follows...
+                    </p>
+
+                    <img src="./images/tree-list-rapresenation.png" alt="" />
+                </div>
+            </details>
+        </article>
+        <article>
+            <details>
+                <summary>Root implementation</summary>
+                <div>
+                    <h2>Implement a Tree via Pytho Lkist</h2>
+                    <pre>
+    # tree = (root, list of subtrees)
+
+    #an empty tree
+    tree=[]
+    
+    # a tree with a single root node
+    tree=["R",[]]
+    
+    # a tree with 3 children
+    #         R
+    #       / | \
+    #     A   B  C
+    tree=["R",[["A",[]],["B",[]],["C",[]]]]
+    
+    # a tree of height 2
+    #         R
+    #       / | \
+    #     A   B  C
+    #    / \
+    #   D   E
+    tree = ["R",[["A",[["D",[]],["E",[]]]],["B",[]],["C",[]]]]
+    
+    # i.e. 4 trees of height 0 with roots B, C, D and E:
+    treeB=["B",[]]
+    treeC=["C",[]]
+    treeD=["D",[]]
+    treeE=["E",[]]
+    # a tree of height 1 with root A composed of the two subtrees D and E
+    treeA=["A",[treeD,treeE]]
+    
+    # the previous tree with root R is thus given by
+    tree=["R",[treeA,treeB,treeC]]
+                    </pre>
+                </div>
+                <div>
+                    <h2>Display the root of a tree</h2>
+                    <pre>
+    def get_tree(tree):
+        return tree[0] 
+                    </pre>
+                </div>
+                <div>
+                    <h2>Test if a tree is empty</h2>
+                    <pre>
+    def isEmpty(tree):
+        return len(tree) == 0
+                    </pre>
+                </div>
+                <div id="get-subtree">
+                    <h2>get subtree</h2>
+                    <pre>
+    def get_subtrees(tree):
+        if isEmpty(tree) : 
+            return
+        else:
+            return tree[1]
+                    </pre>
+                </div>
+                <div id="">
+                    <h2>Show child nodes of the root</h2>
+                    <pre>
+    # Show child nodes of the root
+    def get_leaves(tree):
+        L=[]
+        for subtree in get_subtrees(tree):
+            L.append(get_root(subtree))
+        return L
+    get_leaves(tree)
+                    </pre>
+                </div>
+
+                <div id="">
+                    <h2>Test if the root of a tree is a leaf</h2>
+                    <pre>
+    # Test if the root of a tree is a leaf
+    def isLeaf(tree):
+        return len(tree[1])==0
+                    </pre>
+                </div>
+
+                <div id="">
+                    <h2>Size of a tree</h2>
+                    <pre>
+                    def size(tree):
+                        S=0
+                        if isEmpty(tree):
+                            return 0
+                        else:
+                            for subtree in tree[1]:
+                                S += size(subtree)
+                            return 1 + S
+                    
+                    # EXEMPLE : 
+                    # un tree de hauteur 2
+                    #         R
+                    #       / | \
+                    #     A   B  C
+                    #    / \
+                    #   D   E
+                    print("tree size :",size(tree)) # 6
+                    </pre>
+                </div>
+
+                <div id="">
+                    <h2>height of a tree</h2>
+                    <pre>
+                def height(tree):
+                    L=[]
+                    if not isEmpty(tree) and isLeaf(tree):
+                        return 0
+                    else:
+                        for subtree in tree[1]:
+                            L.append(height(subtree))
+                        return 1+max(L)
+                    </pre>
+                </div>
+
+                <div id="">
+                    <h2>Number of Leaf nodes</h2>
+                    <pre>
+                    def get_leaves_number(tree,lf):
+                        S=0
+                        if isEmpty(tree):
+                            return 0
+                        else:
+                            if feuille(tree):
+                                lf.append(get_racine(tree))
+                                return 1
+                            else:
+                                for soustree in tree[1]:
+                                    S +=feuilles(soustree,lf)
+                                return S
+                    
+                    lf=[]
+                    print("nombre de feuilles :",feuilles(tree,lf))
+                    print(lf)
+                    </pre>
+                </div>
+            </details>
+        </article>
+    </body>
+</html>
+
+<!-- http://www.btechsmartclass.com/data_structures/tree-terminology.html -->
+

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/core.min.js"
+            integrity="sha512-gyJDP6uMpvAYb2VJH3hSm/Jijh5P8HA2x4BaIinUaP5U/6GjeWIi6kBalOVUcKJZ0LP4l2D8P4rZdTd6Mk9xbw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <title>Binary Tree and Binary Search Tree</title>
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="stylesheet" href="./collapse.css" />
+    </head>
+    <body>
+        <article id="introduction">
+            <details>
+                <summary>Binary Tree Definition</summary>
+                <h2>Introduction</h2>
+                <p>A binary tree is an abstract tree data structure where every node has at most 2 children.</p>
+            </details>
+        </article>
+        <article id="element-of-binary-tree">
+            <details>
+                <summary>Elements of a binary tree</summary>
+                <div>
+                    <img src="images/binary-tree-elements.jpg" alt="" />
+                </div>
+            </details>
+        </article>
+        <article id="types-of-binary-tree">
+            <details>
+                <summary>Types of Binary Tree</summary>
+                <div><p>There are several types of Binary tree.</p></div>
+                <!-- https://towardsdatascience.com/5-types-of-binary-tree-with-cool-illustrations-9b335c430254 -->
+                <div id="perfect-binary-tree">
+                    <h2>Perfect Binary Tree</h2>
+                    <p>
+                        A perfect binary tree is a binary tree in which all internal nodes have 2 children and all the
+                        leaf nodes are at the same depth or same level. The total number of nodes in a perfect binary
+                        tree with height H is <var>2<sup>H</sup> — 1</var>.
+                    </p>
+                    <figure>
+                        <img src="images/perfect-binary-tree.png" alt="" />
+                        <figcaption>
+                            Valid and Invalid Structure of Perfect Binary Tree || Designed by AK Parmar
+                        </figcaption>
+                    </figure>
+                </div>
+                <div id="complete-binary-tree">
+                    <h2>Complete Binary Tree</h2>
+                    <p>
+                        A complete binary tree has all levels completely filled with nodes except the last level and in
+                        the last level, all the nodes are as left side as possible. A complete binary tree is a tree
+                        where every level, except possibly the last, is completely filled. The last level must be filled
+                        from left to right. Therefore, you can create a complete binary tree of 20 nodes by filling each
+                        level from left to right, until your tree has 20 nodes.
+                    </p>
+                    <figure>
+                        <img src="images/complete-binary-tree.png" alt="" />
+                        <figcaption>
+                            Valid and invalid structure of complete binary tree || Designed by AK Parmar
+                        </figcaption>
+                    </figure>
+                </div>
+                <div id="degenerate-binary-tree">
+                    <h2>Degenerate (or Pathological) Binary Tree</h2>
+                    <p>A degenerate binary tree is a binary tree where every parent node has only one child node.</p>
+                    <figure>
+                        <img src="images/degenerate-binary-tree.png" alt="" />
+                        <figcaption>
+                            Valid and Invalid Structure of Degenerate Binary Tree || Designed by AK Parmar
+                        </figcaption>
+                    </figure>
+                </div>
+            </details>
+        </article>
+        <article id="binary-tree-properties">
+            <details>
+                <summary>Binary Tree Properties</summary>
+
+                <h2>Path Length</h2>
+                <p>The path length of a tree (binary tree) is the sum of the levels of all the tree's nodes.</p>
+                <p>The path length of a tree is the sum of the depth of all nodes in the tree.</p>
+                <p>
+                    The path length of a tree is a cost measure of great importance for the analysis of algorithms.
+                    <var>P = (3 + 3 + 3 + 3) + (2 + 2 ) + 1 + 1 = 22</var>
+                </p>
+
+                <img src="images/path-ength-binary-tree.jpg" alt="" />
+
+                <h2>Average Path Length</h2>
+                <p>
+                    The average path length of a tree (with respect to a uniform probability distribution on the items
+                    in the tree) is its path length (the sum of the lengths of the path from the root to each node in
+                    the tree) divided by the number of nodes in the tree.
+                </p>
+
+                <img src="images/apl.jpg" alt="" />
+            </details>
+        </article>
+        <article id="bst">
+            <details>
+                <summary>Binary Search Tree (BST)</summary>
+                <h2>Definition</h2>
+                <p>
+                    The binary search tree (BST) is a variation of the binary tree in which: 1) elements in left subtree
+                    are smaller than the elements in the current node, 2) elements in right subtree are greater than the
+                    the elements in the current node.
+                </p>
+                <h2>Example</h2>
+                <p>
+                    There can be several BSTs representing the same set of data ( {6,8,10,11,14,16,18 ,30,33} ) as shown
+                    in the following example.
+                </p>
+                <img src="images/BST-representations.png" alt="" />
+                <h2>BST degeneration</h2>
+                <img src="images/binary-search-tree-degenerating-demo-animation.gif" alt="" />
+            </details>
+        </article>
+        <article id="bst-operations">
+            <details>
+                <summary>BST operations</summary>
+                <div>
+                    <h2>Introduction</h2>
+                    <p>Basic operations on a BST are:</p>
+                    <ul>
+                        <li>Create: creates an empty tree.</li>
+                        <li>Search: Searches for a node in the tree.</li>
+                        <li>Insert: insert a node in the tree.</li>
+                        <li>Delete: deletes a node from the tree.</li>
+                        <li>Inorder: in-order traversal of the tree.</li>
+                        <li>Preorder: pre-order traversal of the tree.</li>
+                        <li>Postorder: post-order traversal of the tree.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Constructing a BST</h2>
+                    <p>There are two ways to construst a BST:</p>
+                    <ul>
+                        <li>inserting a node as leaf</li>
+                        <li>inserting a node as root</li>
+                    </ul>
+                    <h3>Inserting a node as leaf</h3>
+                    <p>Let's do an illustration how to insert 30, 40, 10, 15, 12, 50:</p>
+                    <img src="images/bst-construct-leaf.gif" alt="" />
+                    <p>Let's do an illustration how to insert 30, 40, 10, 15, 12, 50:</p>
+                    <img src="images/binary-search-tree-insertion-animation.gif" alt="" />
+
+                    <!-- <h3>Inserting a node as root</h3> -->
+                    <!-- <p>Let's do an illustration how to insert 21, 28, 14, 32, 25, 18, 11, 30, 19, 15:</p>
+                    <img src="images/bst-construct-leaf.gif" alt="" /> -->
+                </div>
+                <div>
+                    <h2>Searching in a BST</h2>
+                    <p></p>
+                    <img src="images/binary_search_tree_example.gif" alt="" />
+                </div>
+                <div>
+                    <h2>Deletion in a BST (node with 1 or zero children)</h2>
+                    <img src="images/bst-deletion-1-0-child.jpg" alt="" />
+                </div>
+                <div>
+                    <h2>Deletion in a BST (node with 2 children)</h2>
+                    <img src="images/bst-deletion-2-children.jpg" alt="" />
+                </div>
+            </details>
+        </article>
+        <article>
+            <details>
+                <summary>Python Implementation of a BST</summary>
+                <div>
+                    <h2>Python list</h2>
+                    <p>
+                        A tree is represented by a list of tuples: 1) the value of the node is called the label, key or
+                        content; 2) the list of children.
+                    </p>
+                    <pre>
+Tree = [ 
+    (label_1, [left_index_1, right_index_1]),
+    ...
+    (label_n, [left_index_n, right_index_n])
+]
+                    </pre>
+                    <p>
+                        We could have used a list of lists instead of a list of tuples. Other models mix the labels and
+                        the indices of the wires in the same sublist. The possibilities of representation are endless!
+                    </p>
+
+                    <p>Consider the following binary tree. Here is the implementation of the tree in Python.</p>
+                    <img src="./images/bst-python-example.png" alt="" />
+                    <pre>
+tree = [
+    (16, [1,2]), 
+    (11, [3,4]), (33, [5,6]), 
+    (6, [-1,7]), (14, []), (30, []), (35, []), 
+    (10, [])
+]
+
+print(tree)
+
+# Par exemple
+print(tree[2][1])    # To get the list of children of the third node (indexed to 2)
+# -> [5, 6]
+
+print(tree[4][0])    #  To get the key of the fifth node (indexed to 4)
+# -> 14
+
+
+### 
+def isEmpty(tree):
+    return len(tree) == 0  
+    
+###
+def get_label(node)
+    return node[0]
+
+print(get_label(tree[1])) # -> 11
+
+### Get the list of children of a node
+def get_children(node):
+    return node[1]
+
+print(get_children(tree[0])) # -> [1, 2]
+
+def get_left(tree, node):
+    return tree[node[1][0]]
+
+def get_right(tree, node):
+    tree[node[1][1]]
+
+def get_root(tree):
+    return tree[0]
+
+### Recursion (function calls itself within its code) vs Iteration (loop)
+
+#### Recursion (function calls itself within its code)
+def search_rec(tree, node, x):
+    if node is None or x == get_label(node):
+        return node
+    elif x <= get_label(node):
+        return search_rec(tree, get_left(tree, node), x)
+    else:
+        return search_rec(tree, get_right(tree, node), x)            
+
+print(search_rec(tree, (16, [1, 2]), 6)) # -> (6, [-1, 7])
+
+#### Iteration (loop)
+def search_iter(tree, node, x):
+    node = get_root(tree) 
+    while node is not None and x != get_label(node):
+        if x <= get_label(node):
+            node = get_left(tree, node)
+        else:
+            node = get_right(tree,node)
+    return node
+
+                    </pre>
+                </div>
+            </details>
+        </article>
+    </body>
+</html>
+
+<!-- http://www.btechsmartclass.com/data_structures/tree-terminology.html -->
+

@@ -124,11 +124,11 @@
                         size 6.
                     </p>
                     <pre>
-                        #         R
-                        #       / | \
-                        #     A   B  C
-                        #    / \
-                        #   D   E
+#         R
+#       / | \
+#     A   B  C
+#    / \
+#   D   E
                     </pre>
                 </div>
             </details>
@@ -171,164 +171,166 @@
                 <div>
                     <h2>Implement a Tree via Pytho Lkist</h2>
                     <pre>
-    # tree = (root, list of subtrees)
+# tree = (root, list of subtrees)
 
-    #an empty tree
-    tree=[]
-    
-    # a tree with a single root node
-    tree=["R",[]]
-    
-    # a tree with 3 children
-    #         R
-    #       / | \
-    #     A   B  C
-    tree=["R",[["A",[]],["B",[]],["C",[]]]]
-    
-    # a tree of height 2
-    #         R
-    #       / | \
-    #     A   B  C
-    #    / \
-    #   D   E
-    tree = ["R",[["A",[["D",[]],["E",[]]]],["B",[]],["C",[]]]]
-    
-    # i.e. 4 trees of height 0 with roots B, C, D and E:
-    treeB=["B",[]]
-    treeC=["C",[]]
-    treeD=["D",[]]
-    treeE=["E",[]]
-    # a tree of height 1 with root A composed of the two subtrees D and E
-    treeA=["A",[treeD,treeE]]
-    
-    # the previous tree with root R is thus given by
-    tree=["R",[treeA,treeB,treeC]]
+#an empty tree
+tree=[]
+
+# a tree with a single root node
+tree=["R",[]]
+
+# a tree with 3 children
+#         R
+#       / | \
+#     A   B  C
+tree=["R",[["A",[]],["B",[]],["C",[]]]]
+
+# a tree of height 2
+#         R
+#       / | \
+#     A   B  C
+#    / \
+#   D   E
+tree = ["R",[["A",[["D",[]],["E",[]]]],["B",[]],["C",[]]]]
+
+# i.e. 4 trees of height 0 with roots B, C, D and E:
+treeB=["B",[]]
+treeC=["C",[]]
+treeD=["D",[]]
+treeE=["E",[]]
+# a tree of height 1 with root A composed of the two subtrees D and E
+treeA=["A",[treeD,treeE]]
+
+# the previous tree with root R is thus given by
+tree=["R",[treeA,treeB,treeC]]
                     </pre>
                 </div>
                 <div>
                     <h2>Display the root of a tree</h2>
                     <pre>
-    def get_root(tree):
-        return tree[0] 
+def get_root(tree):
+    return tree[0] 
                     </pre>
                 </div>
                 <div>
                     <h2>Test if a tree is empty</h2>
                     <pre>
-    def isEmpty(tree):
-        return len(tree) == 0
+def isEmpty(tree):
+    return len(tree) == 0
                     </pre>
                 </div>
                 <div id="get-subtree">
                     <h2>get subtree</h2>
                     <pre>
-    def get_subtrees(tree):
-        if isEmpty(tree) : 
-            return
-        else:
-            return tree[1]
+def get_subtrees(tree):
+    if isEmpty(tree) : 
+        return
+    else:
+        return tree[1]
                     </pre>
                 </div>
                 <div id="">
                     <h2>Show child nodes of the root</h2>
                     <pre>
-    # Show child nodes of the root
-    def get_leaves(tree):
-        L=[]
-        for subtree in get_subtrees(tree):
-            L.append(get_root(subtree))
-        return L
-    get_leaves(tree)
+# Show child nodes of the root
+def get_leaves(tree):
+    L=[]
+    for subtree in get_subtrees(tree):
+        L.append(get_root(subtree))
+    return L
+get_leaves(tree)
                     </pre>
                 </div>
                 <div id="">
                     <h2>Test if the root of a tree is a leaf</h2>
                     <pre>
-    # Test if the root of a tree is a leaf
-    def isLeaf(tree):
-        return len(tree[1])==0
+# Test if the root of a tree is a leaf
+def isLeaf(tree):
+    return len(tree[1])==0
                     </pre>
                 </div>
 
                 <div id="">
                     <h2>Size of a tree</h2>
                     <pre>
-                    def size(tree):
-                        S=0
-                        if isEmpty(tree):
-                            return 0
-                        else:
-                            for subtree in tree[1]:
-                                S += size(subtree)
-                            return 1 + S
-                    
-                    # EXEMPLE : 
-                    # un tree de hauteur 2
-                    #         R
-                    #       / | \
-                    #     A   B  C
-                    #    / \
-                    #   D   E
-                    print("tree size :",size(tree)) # 6
+def size(tree):
+    S=0
+    if isEmpty(tree):
+        return 0
+    else:
+        for subtree in tree[1]:
+            S += size(subtree)
+        return 1 + S
+
+# EXEMPLE : 
+# un tree de hauteur 2
+#         R
+#       / | \
+#     A   B  C
+#    / \
+#   D   E
+print("tree size :",size(tree)) # 6
                     </pre>
                 </div>
 
                 <div id="">
                     <h2>height of a tree</h2>
                     <pre>
-                def height(tree):
-                    L=[]
-                    if not isEmpty(tree) and isLeaf(tree):
-                        return 0
-                    else:
-                        for subtree in tree[1]:
-                            L.append(height(subtree))
-                        return 1+max(L)
+def height(tree):
+    L=[]
+    if not isEmpty(tree) and isLeaf(tree):
+        return 0
+    else:
+        for subtree in tree[1]:
+            L.append(height(subtree))
+        return 1+max(L)
                     </pre>
                 </div>
 
                 <div id="">
                     <h2>Number of Leaf nodes</h2>
                     <pre>
-                    def get_leaves_number(tree,lf):
-                        S=0
-                        if isEmpty(tree):
-                            return 0
-                        else:
-                            if feuille(tree):
-                                lf.append(get_racine(tree))
-                                return 1
-                            else:
-                                for soustree in tree[1]:
-                                    S +=feuilles(soustree,lf)
-                                return S
-                    
-                    lf=[]
-                    print("nombre de feuilles :",feuilles(tree,lf))
-                    print(lf)
+def get_leaves_number(tree,lf):
+    S=0
+    if isEmpty(tree):
+        return 0
+    else:
+        if feuille(tree):
+            lf.append(get_racine(tree))
+            return 1
+        else:
+            for soustree in tree[1]:
+                S +=feuilles(soustree,lf)
+            return S
+
+lf=[]
+print("nombre de feuilles :",feuilles(tree,lf))
+print(lf)
                     </pre>
                 </div>
                 <div id="create-tree">
                     <h2>Python program to create a tree</h2>
                     <img src="images/cto.jpg" alt="" />
                     <pre>
-                        # The python program should have at least two functions "create_node" and "add_node".
-                        # The function "create_node" takes in as input a value and returns a tree (tree node) as a list of two elements [ value, [ ] ]. The function "add_node" takes in as inputs a node and a tree and it returns a new tree.
-                        
-                        def create_node(data):
-                          return [data, []]
-                        
-                        def add_node(node, tree):
-                          tree_children = tree[1]
-                          tree_children.append(node)
-                          return tree
-                        
-                        ceo_node = create_node("CEO")
-                        print("ceo_node", ceo_node)
-                        
-                        cto_node = create_node("CTO")
-                        tree = add_node(cto_node, ceo_node)
-                        print("tree", tree)
+# The python program should have at least two functions "create_node" and "add_node".
+# The function "create_node" takes in as input a value and 
+# returns a tree (tree node) as a list of two elements [ value, [ ] ]. 
+# The function "add_node" takes in as inputs a node and a tree and it returns a new tree.
+
+def create_node(data):
+    return [data, []]
+
+def add_node(node, tree):
+    tree_children = tree[1]
+    tree_children.append(node)
+    return tree
+
+ceo_node = create_node("CEO")
+print("ceo_node", ceo_node)
+
+cto_node = create_node("CTO")
+tree = add_node(cto_node, ceo_node)
+print("tree", tree)
                     </pre>
                 </div>
             </details>

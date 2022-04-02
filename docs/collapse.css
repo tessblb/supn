@@ -1,3 +1,6 @@
+summary {
+    cursor: pointer;
+}
 summary::-webkit-details-marker {
     color: #00acf3;
     font-size: 125%;
@@ -19,3 +22,4 @@ details details {
 details details summary {
     font-size: 16px;
 }
+

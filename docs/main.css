@@ -9,13 +9,18 @@ h2 {
     font-size: 1.5em;
 }
 p,
-ul {
+ul,
+ol {
     font-size: 1.3em;
 }
 .ver {
     display: flex;
     flex-direction: column;
     width: 500px;
+}
+
+pre {
+    font-size: 1.5em;
 }
 
 td {
@@ -29,3 +34,4 @@ td {
 thead {
     font-weight: bold;
 }
+

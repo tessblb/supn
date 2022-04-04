@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>General Trees</title>
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="stylesheet" href="./collapse.css" />
+        <script src="vendors/highlight.min.js"></script>
+        <script src="vendors/highlight.ln.min.js"></script>
+        <link rel="stylesheet" href="vendors/highlight.min.css" />
+    </head>
+    <body>
+        <article id="introduction-pyqt">
+            <details>
+                <summary>PyQt GUI</summary>
+                <h2>Introduction</h2>
+                <ul>
+                    <li>Windows,</li>
+                    <li>Labels,</li>
+                    <li>Interactions,</li>
+                    <li>Colors,</li>
+                    <li>Layout</li>
+                </ul>
+            </details>
+        </article>
+        <article id="windows-pyqt">
+            <details>
+                <summary>PyQt Windows</summary>
+                <div>
+                    <h2>Introduction</h2>
+                    <div id="empty-window-pyqt">
+                        <h2>Empty Window</h2>
+                        <pre><code class="python">
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtCore import QCoreApplication
+
+app = QCoreApplication.instance()
+if app is None:
+    app = QApplication(sys.argv)
+
+window = QWidget()
+window.show()
+app.exec_()
+                        </code>
+                    </pre>
+                    </div>
+                    <!-- sys.argv is a list in Python, which contains the command-line arguments passed to the script. -->
+                    <!-- app = QApplication(sys.argv) or app = QApplication([]) -->
+                    <div id="window-text-pyqt">
+                        <h2>Window with text</h2>
+                        <pre><code class="python">
+import sys
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow
+from PyQt5.QtCore import Qt, QCoreApplication
+
+# On fait hériter notre classe de QMainWindow
+class MainWindow(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+
+        # Définir un titre pour la fenêtre
+        self.setWindowTitle("Ma super fenêtre")
+        self.label = QLabel("Voici une fenêtre PyQt5 !")
+
+        # Centrer le texte par rapport à la widget contenante
+        self.label.setAlignment(Qt.AlignCenter)
+
+        # Mettre le label dans la central widget
+        self.setCentralWidget(self.label)
+
+app = QCoreApplication.instance() # https://qt.developpez.com/doc/4.7/qcoreapplication/#instance
+if app is None:
+    app = QApplication(sys.argv)
+
+window = MainWindow()
+window.show()
+app.exec_()
+                    </code></pre>
+                    </div>
+                    <div id="window-text-pyqt">
+                        <h2>Window with Label and Images</h2>
+                        <pre><code class="python">
+import sys
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow
+from PyQt5.QtCore import Qt, QCoreApplication
+from PyQt5.QtGui import QPixmap
+
+class Window(QMainWindow):
+
+    def __init__(self):
+    super().__init__()
+    self.setWindowTitle("Paint")
+    self.label = QLabel('Hello')
+    self.label.setPixmap(QPixmap('/tmp/python.png'))
+    self.label.setScaledContents(True)
+    self.setCentralWidget(self.label)
+
+app = QCoreApplication.instance()
+if app is None:
+    app = QApplication(sys.argv)
+
+window = Window()
+window.show()
+app.exec_()
+                        </code></pre>
+                    </div>
+                    <div id="templte-pyqt">
+                        <h2>templte</h2>
+                        <pre><code class="python">templte</code></pre>
+                    </div>
+                </div>
+            </details>
+        </article>
+    </body>
+    <script>
+        hljs.highlightAll();
+    </script>
+</html>
+
+<!-- http://www.btechsmartclass.com/data_structures/tree-terminology.html -->
+

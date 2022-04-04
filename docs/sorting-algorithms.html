@@ -60,7 +60,7 @@
                     <var>n − 1 + n − 2 + . . . + 2 + 1 = O(n<sup>2</sup>)</var> for all inputs.
                 </p>
                 <h3>Bubble Sort - Python implementation</h3>
-                <pre><code class="python">
+                <pre><code class="python" style="opacity:0">
 def merge_sort(tab):
     n = len(tab)
     # Iterate through all array elements
@@ -70,6 +70,7 @@ def merge_sort(tab):
             if tab[j] > tab[j+1] :
                 tab[j], tab[j+1] = tab[j+1], tab[j]
             print(tab)
+    return tab
             </pre></code>
             </details>
         </article>
@@ -198,6 +199,41 @@ sorted_list = selection_sort( [34, 52, 1, 7, 40] )
                 <p>The divide phase takes O(log(n)) to create sub problems.</p>
                 <p>The conquer phase takes O(n) to combine and sort arrays.</p>
                 <p>The time complexity of this algorithm is <var>𝑂 (𝑛log𝑛)</var> in the best/worst/average case.</p>
+
+                <div>
+                    <h2>Code implementation</h2>
+                    <pre>
+                        <code class="python">
+def merge(list_1, list_2):
+    nums = []
+    i, j = 0, 0
+    while i < len(list_1) and j < len(list_2):
+        if list_1[i]<=list_2[j]:
+            nums.append(list_1[i])
+            i+=1
+        else:
+            nums.append(list_2[j])
+            j+=1
+    while i < len(list_1):
+        nums.append(list_1[i])
+        i += 1
+    while j < len(list_2):
+        nums.append(list_2[j])
+        j += 1
+    return nums
+
+def sort_merge(nums):
+    if len(nums) < 2:
+        return nums
+
+    middle = len(nums) // 2
+    list_1 = sort_merge(nums[:middle])
+    list_2 = sort_merge(nums[middle:])
+    
+    return merge(list_1, list_2)
+                        </code>
+                    </pre>
+                </div>
             </details>
         </article>
 

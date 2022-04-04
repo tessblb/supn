@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Arduino Project 1</title>
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="stylesheet" href="./collapse.css" />
+        <script src="vendors/highlight.min.js"></script>
+        <script src="vendors/highlight.ln.min.js"></script>
+        <link rel="stylesheet" href="vendors/highlight.min.css" />
+    </head>
+    <body>
+        <article id="basic-commands">
+            <details>
+                <summary>Basic commands</summary>
+                <h2>C Basic commands</h2>
+                <pre>
+                    <code class="C">
+// loop
+for (int num = 0; num < 10; num ++) {
+    // some code
+}
+
+// Ternary operator 
+// It is used to execute code based on the result of a binary condition.
+condition ? value_if_true : value_if_false
+
+                    </code>
+                </pre>
+                <h2>Arduino commands</h2>
+                <pre>
+                    <code class="C">
+// It configures a specific pin to behave either as an input or an output
+pinMode(PIN_LED, OUTPUT/INPUT); 
+
+// Write a HIGH or a LOW value to a digital pin.
+int PIN_NUMBER;
+digitalWrite(PIN_NUMBER, HIGH/LOW);
+
+// Pauses the program for the amount of time (in miliseconds) 
+// specified as parameter. 
+int one_sec = 1000; // 1 s = 1_000 ms
+delay(one_sec);
+
+// Establishes serial communication between your Arduino board 
+// and another device (computer).
+// 9600 -> baud rate (it determines the speed of communication over a data channel.)                   
+Serial.begin(9600);
+Serial.println("hello");
+                    </code>
+                </pre>
+            </details>
+        </article>
+        <article id="terminology">
+            <details>
+                <summary>Problem 1</summary>
+                <div>
+                    <p>
+                        Write a program that turns on an integrated micro-LED for 1.5 seconds and then turns it off for
+                        1.5 second. The process is repeated infinitely.
+                    </p>
+                    <pre class="blur"><code class="C">
+const int PIN_LED = 13;
+
+void setup() {
+    // initialize digital pin 13 as an output
+    pinMode(PIN_LED, OUTPUT); 
+}
+void loop() { 
+    digitalWrite(PIN_LED, HIGH); 
+    delay(1500); 
+    digitalWrite(PIN_LED, LOW); 
+    delay(1500);
+}
+                        </code>
+                    </pre>
+                </div>
+            </details>
+            <details style="display: none">
+                <!-- https://www.tinkercad.com/things/kE4AcTWcbKd-funky-crift/editel?tenant=circuits -->
+                <summary>Problem A</summary>
+                <p>
+                    1) Make the following assembly with 6 LEDs. 2) Write a program that turns on the Led producing
+                    different sequence patterns as shown below figure.
+                </p>
+                <img src="images/led-prob-2.jpg" alt="" />
+                <pre>
+        <code class="C">
+const int led1Pin = 12;
+const int led2Pin = 13;
+int switchVal = false;
+
+void setup() {
+    pinMode(led1Pin, OUTPUT);
+    pinMode(led2Pin, OUTPUT);
+    Serial.begin(9600);
+}
+
+void turn_off() {
+    digitalWrite(led2Pin, LOW);
+    digitalWrite(led1Pin, LOW);
+}
+
+void loop() {
+    Serial.println(switchVal);
+    switchVal = !switchVal;
+    turn_off();
+    
+    if (switchVal) {
+        digitalWrite(led1Pin, HIGH);
+        delay(1000);
+    }
+    
+    else {
+        digitalWrite(led2Pin, HIGH);
+        delay(1000);
+    }
+}
+        </code>
+    </pre>
+                <pre><code class="C">
+const int led1Pin = 12;
+const int led2Pin = 13;
+int switchVal = false;
+
+void setup() {
+    pinMode(led1Pin, OUTPUT);
+    pinMode(led2Pin, OUTPUT);
+    Serial.begin(9600);
+}
+
+void turn_off() {
+    digitalWrite(led2Pin, LOW);
+    digitalWrite(led1Pin, LOW);
+}
+
+void loop() {
+    Serial.println(switchVal);
+    switchVal = !switchVal;
+    turn_off();
+    
+    digitalWrite(switchVal ? led1Pin: led2Pin, HIGH);
+
+    delay(1000);
+}
+                </code></pre>
+                <img src="images/prj-1-1.jpg" alt="" />
+            </details>
+        </article>
+        <article>
+            <details>
+                <summary>Problem A-B-C-D</summary>
+                <p>1) Make the following assembly with 6 LEDs.</p>
+                <img src="./images/schematic-view.jpg" alt="" />
+                <img class="blur" src="images/schematic-view-solution.jpg" alt="" />
+                <p>
+                    2) Write a program that turns on the Led producing different sequence patterns as shown below
+                    figure.
+                </p>
+                <img src="images/led-lights.jpg" alt="" />
+                <pre class="blur">
+        <code class="C">
+// C++ code
+//  
+
+void setup() {
+    for ( int pin = 2; pin < 8; pin++) pinMode(pin, OUTPUT);
+}
+
+void reset() {
+    for ( int pin = 2; pin < 8; pin++) digitalWrite(pin, LOW);
+}
+
+void alternate() {
+    for ( int pin = 0; pin < 2; pin++) {
+        reset();
+        digitalWrite(2 + pin, HIGH);
+        digitalWrite(4 + pin, HIGH);
+        digitalWrite(6 + pin, HIGH);
+        delay(1000);
+    }
+}
+
+
+void forward() {
+    for ( int pin = 2; pin < 8; pin++) {
+        reset();
+        digitalWrite(pin, HIGH);
+        delay(1000);
+    }
+}
+
+void backward() {
+    for ( int pin = 6; pin > 2; pin--) {
+        reset();
+        digitalWrite(pin, HIGH);
+        delay(1000);
+    }
+}
+
+void move_away() {
+    for ( int pin = 0; pin < 3; pin++) {
+        reset();
+        digitalWrite(2 + pin, HIGH);
+        digitalWrite(7 - pin, HIGH);
+        delay(1000);
+    }
+}
+
+void get_closer() {
+    for ( int pin = 0; pin < 3; pin++) {
+        reset();
+        digitalWrite(4 - pin, HIGH);
+        digitalWrite(5 + pin, HIGH);
+        delay(1000);
+    }
+}
+
+
+void loop() {
+    // A
+    alternate();
+
+    //B
+    // forward();
+
+    //C
+    // forward();
+    // backward();
+
+    // D
+    // move_away();
+    // get_closer();
+}
+        </code>
+        </pre>
+            </details>
+        </article>
+    </body>
+    <script>
+        hljs.highlightAll();
+    </script>
+</html>
+
+<!-- http://www.btechsmartclass.com/data_structures/tree-terminology.html -->
+

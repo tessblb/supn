@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 import json
 from server.queue import queue, enqueue, dequeue
 from server.tree import tree
+from server.sort import bubbleSort, quickSort, mergeSort
 
 app = Flask(__name__)
 
@@ -21,7 +22,25 @@ def getTreeRoute():
 @app.route('/queue', methods=['GET'])
 def queueRoute():
   title="FIFO Data Structure"
-  return render_template("queue.html", my_queue=queue, title=title)
+
+@app.route('/sort', methods=['GET'])
+def sortRoute():
+  return render_template("sort.html", my_queue=queue)
+
+@app.route('/bubbleSort', methods=['GET'])
+def bubbleSortRoute():
+  items = request.args.get('items').split(',')
+  return json.dumps(bubbleSort([int(x) for x in items]))
+
+@app.route('/quickSort', methods=['GET'])
+def quickSortRoute():
+  items = request.args.get('items').split(',')
+  return json.dumps(quickSort([int(x) for x in items]))
+
+@app.route('/mergeSort', methods=['GET'])
+def mergeSortRoute():
+  items = request.args.get('items').split(',')
+  return json.dumps(mergeSort([int(x) for x in items]))
 
 @app.route('/enqueue', methods=['GET'])
 def enqueueRoute():

@@ -5,14 +5,21 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/core.min.js"
-            integrity="sha512-gyJDP6uMpvAYb2VJH3hSm/Jijh5P8HA2x4BaIinUaP5U/6GjeWIi6kBalOVUcKJZ0LP4l2D8P4rZdTd6Mk9xbw=="
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"
+            integrity="sha512-BNc7saQYlxCL10lykUYhFBcnzdKMnjx5fp5s5wPucDyZ7rKNwCoqJh1GwEAIhuePEK4WM9askJBRsu7ma0Rzvg=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
         <title>Binary Tree and Binary Search Tree</title>
         <link rel="stylesheet" href="./main.css" />
         <link rel="stylesheet" href="./collapse.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css"
+            integrity="sha512-hasIneQUHlh06VNBe7f6ZcHmeRTLIaQWFd43YriJ0UND19bvYRauxthDg8E4eVNPm9bRUhr5JGeqH7FRFXQu5g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
     </head>
     <body>
         <article id="introduction">
@@ -191,7 +198,7 @@ Tree = [
 
                     <p>Consider the following binary tree. Here is the implementation of the tree in Python.</p>
                     <img src="./images/bst-python-example.png" alt="" />
-                    <pre>
+                    <pre><code class="python">
 tree = [
     (16, [1,2]), 
     (11, [3,4]), (33, [5,6]), 
@@ -257,11 +264,16 @@ def search_iter(tree, node, x):
             node = get_right(tree,node)
     return node
 
+print(search_iter(tree, (16, [1, 2]), 6)) # -> (6, [-1, 7])
+</code>
                     </pre>
                 </div>
             </details>
         </article>
     </body>
+    <script>
+        hljs.highlightAll();
+    </script>
 </html>
 
 <!-- http://www.btechsmartclass.com/data_structures/tree-terminology.html -->

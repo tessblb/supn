@@ -345,10 +345,12 @@ import csv
 def organize_data():
     fName = 'laposte_hexasmal.small.csv'
     with open(fName, newline='') as csvfile:
-    fields = csv.reader(csvfile, delimiter=';')
-    for field in fields:
-        // complete
-        print(field[3], field[4], field[5])
+        fields = csv.reader(csvfile, delimiter=';')
+        for field in fields:
+            // complete
+            print(field[3], field[4], field[5])
+
+organize_data()
                 </code></pre>
 
                 <h2>haversine function</h2>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sorting Algorithms</title>
+        <link rel="stylesheet" href="./main.css" />
+        <link rel="stylesheet" href="./collapse.css" />
+        <script src="vendors/highlight.min.js"></script>
+        <script src="vendors/highlight.ln.min.js"></script>
+        <link rel="stylesheet" href="vendors/highlight.min.css" />
+    </head>
+    <body>
+        <article id="introduction">
+            <details>
+                <summary>Sorting Algorithm Introduction</summary>
+                <h2>Definition</h2>
+                <p>A sorting algorithm, in the case of a list, returns an ordered version of the list.</p>
+                <p>Sorting data allows to arrange them in ascending or descending order.</p>
+                <p>
+                    It is possible to sort different types of data (numbers, dates, strings ) if it exists a comparison
+                    criterion for this data.
+                </p>
+                <h2>Examples</h2>
+                <p>Examples of ordered data are:</p>
+                <ul>
+                    <li>People in alphabetical order,</li>
+                    <li>Players by score,</li>
+                    <li>Files by size,</li>
+                    <li>Files by date of publication,</li>
+                    <li>Folder by depth in a tree structure</li>
+                </ul>
+                <p>There are many sorting algorithms. Examples of sorting algorithms are:</p>
+                <ul>
+                    <li><a href="#bubble-sort">Bubble Sort</a>,</li>
+                    <li><a href="#insertion-sort">Insertion Sort</a>,</li>
+                    <li><a href="#selection-sort">Selection Sort</a>,</li>
+                    <li><a href="#merge-sort">Merge Sort</a>,</li>
+                    <!-- <li><a href="#quick-sort">Quick Sort</a>,</li>
+                <li><a href="#heap-sort">Heap Sort</a></li> -->
+                </ul>
+            </details>
+        </article>
+        <article id="bubble-sort">
+            <details>
+                <summary>Bubble Sort</summary>
+                <p>
+                    The bubble sort algorithm, sometimes referred to as sinking sort, is a sorting algorithm that
+                    compares adjacent elements of a list and swaps them if they are in the wrong order.
+                </p>
+                <h3>Bubble Sort Algorithm Animation</h3>
+                <img src="./images/bubble-sort.gif" alt="" />
+                <h3>Bubble Sort - Pseudo code</h3>
+                <img src="./images/pseudo-bubble-sort.jpg" alt="" />
+                <h2>Run-time Analysis</h2>
+                <p>
+                    Since the underlying model focuses on the number of comparisons (not on the number of swaps as it is
+                    less dominant operation), the number of comparisons is
+                    <var>n − 1 + n − 2 + . . . + 2 + 1 = O(n<sup>2</sup>)</var> for all inputs.
+                </p>
+                <h3>Bubble Sort - Python implementation</h3>
+                <pre class="blur"><code class="python">
+def bubble_sort(nums):
+    n = len(nums)
+    # Iterate through all array elements
+    for i in range(n):
+        for j in range(0, n - i - 1 ):
+            # swap if the found element is bigger than the next one
+            if nums[j] > nums[j+1] :
+                nums[j], nums[j+1] = nums[j+1], nums[j]
+    return nums
+
+arr = [76,32,65,2,80,11,7]
+print(arr)
+res = bubble_sort(arr) 
+print(res)
+            </pre></code>
+            </details>
+        </article>
+        <article id="insertion-sort">
+            <details>
+                <summary>Insertion Sort</summary>
+                <p>
+                    This is a sorting algorithm commonly used by card players to organize cards. At each stage of
+                    sorting, you take the leftmost first in the “heap to be sorted” that is in your hand, and insert it
+                    in its place into the “left heap already sorted”. At the end, your cards are sorted in ascending
+                    order in your hand.
+                </p>
+                <h3>Insertion Sort Animation</h3>
+                <img src="images/insertion-sort.gif" alt="" />
+                <img src="images/inserted-sort-static.png" alt="" />
+                <!-- <div class="ver">
+                    <img src="images/pseudo-code-insertion-sort.jpg" alt="" />
+                </div> -->
+
+                <h2>Run-time Analysis</h2>
+                <p>
+                    Insertion sort runs in <var>O(n)</var> time in its best case and runs in <var>O(n^2)</var> in its
+                    worst and average cases.
+                </p>
+                <h3>Best case analysis</h3>
+                <p>
+                    Insertion sort performs two operations: it scans through the list, comparing each pair of elements,
+                    and it swaps elements if they are out of order. Each operation contributes to the running time of
+                    the algorithm. If the input array is already in sorted order, insertion sort compares
+                    <var>O(n)</var> elements and performs no swaps (in the Python code above, the inner loop is never
+                    triggered). Therefore, in the best case, insertion sort runs in <var>O(n)</var>time.
+                </p>
+                <h3>Worst and Average Case Analysis</h3>
+                <p>
+                    The worst case for insertion sort will occur when the input list is in decreasing order. To insert
+                    the last element, we need at most n-1 comparisons and at most n-1 swaps. When analyzing algorithms,
+                    the average case often has the same complexity as the worst case. So insertion sort, on average,
+                    takes O(n^2) time.
+                </p>
+                <p>
+                    Recurrence relation in best case: <var>T(n) = T(n−1)+1, T(2) = 1</var>, and the solution is
+                    <var>T(n) = O(n)</var>.
+                </p>
+                <h2>Insertion sort: Python implementation</h2>
+                <pre class="blur"><code class="python">
+def insertionSort(nums):
+    for step in range(1, len(nums)):
+        key = nums[step]
+        j = step - 1
+        
+        # Compare the key with each element on the left of it until an element smaller than it is found
+        # For descending order, change key<array[j] to key>array[j].
+        while j >= 0 and key < nums[j]:
+            nums[j + 1] = nums[j]
+            j = j - 1
+        
+        # Place the key after the element just smaller than it.
+        nums[j + 1] = key
+        
+    return nums
+
+
+arr = [76,32,65,2,80,11,7]
+print(arr)
+res = insertionSort(arr) 
+print(res)
+        </code></pre>
+            </details>
+        </article>
+        <article id="selection-sort">
+            <details>
+                <summary>Selection Sort</summary>
+                <p>
+                    The selection sort is a natural sorting algorithm in which we find the minimum, second minimum,
+                    third minimum and so on and arrange them in increasing order.
+                </p>
+                <h3>Selection Sort Animation</h3>
+                <p>
+                    Here is an animation that represents the progress of the "selection sort" in the list [6, 5, 3, 1,
+                    8, 7, 2, 4].
+                </p>
+                <div class="ver">
+                    <img src="images/selection-sort.gif" alt="" />
+                </div>
+
+                <h3>Selection Sort Pseudo code</h3>
+                <img src="images/pseudo-selection-sort.jpg" alt="" />
+                <h2>Run-time Analysis</h2>
+                <p>
+                    Note Line 5 of Selection Sort is executed for all inputs. During ith iteration, the statement is
+                    executed (n−i) times. Therefore, the total cost is n − 1 + n − 2 + . . . + 1, which is O(n2).
+                    Alternatively, the recurrence relation both in worst case and best case is T(n) = T(n − 1) + n − 1,
+                    T(2) = 1. Thus, T(n) = θ(n2).
+                </p>
+                <h3>Selection sort: python implementation</h3>
+                <pre class="blur"><code class="python">
+def selection_sort(array):
+    n = len(array)
+    for i in range(0, n - 1):
+        minpos = i
+        for j in range(i+1, n):
+            if array[j] < array[minpos]:
+                minpos = j
+        array[i], array[minpos] = array[minpos], array[i]
+    return array
+
+arr = [76, 32, 65, 2, 80, 11, 7]
+print(arr)
+res = selection_sort(arr) 
+print(res)
+</code></pre>
+            </details>
+        </article>
+        <article id="merge-sort">
+            <details>
+                <summary>Merge Sort</summary>
+                <p>
+                    Merge Sort is based on the paradigm divide and conquer which has divide and conquer (combine)
+                    phases.
+                </p>
+                <h3>Divide phase</h3>
+                <p>
+                    As part of divide phase which is a top-down approach, the input array is split into half,
+                    recursively, until the array size reduces to one. That is, given a problem of size n, break it into
+                    two sub problems of size n/2, again break each of this sub problems into two sub problems of size
+                    n/4, and so on till the sub problem size reduces to n/2k = 1 for some integer k.
+                </p>
+                <h3>Conquer phase</h3>
+                <p>
+                    As part of conquer phase which is a bottom-up approach, we combine two sorted arrays of size one to
+                    get a sorted array of size two, and combine two sorted arrays of size two to get a sorted array of
+                    size 4, and in general, we combine two sorted arrays of size n/2 to get a sorted array of size n.
+                </p>
+                <h3>Merge Sort Algorithm Animation</h3>
+                <img src="./images/merge-sort-animation.gif" alt="" />
+                <h2>Run-time Analysis</h2>
+                <p>The divide phase takes O(log(n)) to create sub problems.</p>
+                <p>The conquer phase takes O(n) to combine and sort arrays.</p>
+                <p>The time complexity of this algorithm is <var>𝑂 (𝑛log𝑛)</var> in the best/worst/average case.</p>
+
+                <div>
+                    <h2>Merge sort: python implementation</h2>
+                    <pre class="blur">
+                        <code class="python">
+def merge(list_1, list_2):
+    merged = []
+    i, j = 0, 0
+    while i < len(list_1) and j < len(list_2):
+        if list_1[i] <= list_2[j]:
+            merged.append(list_1[i])
+            i+=1
+        else:
+            merged.append(list_2[j])
+            j+=1
+    while i < len(list_1):
+        merged.append(list_1[i])
+        i += 1
+    while j < len(list_2):
+        merged.append(list_2[j])
+        j += 1
+    return merged
+
+def sort_merge(nums):
+    if len(nums) < 2:
+        return nums
+
+    middle = len(nums) // 2
+    list_1 = sort_merge(nums[:middle])
+    list_2 = sort_merge(nums[middle:])
+
+    return merge(list_1, list_2)
+
+arr = [76, 32, 65, 2, 80, 11, 7]
+print(arr)
+res = sort_merge(arr) 
+print(res)
+                        
+                        </code>
+                    </pre>
+                </div>
+            </details>
+        </article>
+
+        <!-- <section id="quick-sort">
+            <h1>Quick Sort</h1>
+            <p>
+                The quick sort algorithm is a sorting algorithm that follows divide and conquer strategy. In this
+                sorting, we pick a special element pivot and the given array is partitioned with respect to the pivot
+                element x. Elements that are smaller than x will be in one partition and the elements that are greater
+                than x will be in another partition. This process is done recursively till sub problem size becomes one.
+                The pivot element, in principle can be any element in the array, however, for our discussion we choose
+                to work with the last element of the array.
+            </p>
+            <h2>Run-time Analysis</h2>
+        </section> -->
+        <!-- <section id="heap-sort">
+            <h1>Heap Sort</h1>
+            <h2>Run-time Analysis</h2>
+        </section> -->
+        <article>
+            <details>
+                <summary>Run-time Analysis Summary</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Sorting Algorithms</td>
+                            <td>Best case</td>
+                            <td>Average case</td>
+                            <td>Worst case</td>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Bubble sort</td>
+                        <td>O(n<sup>2</sup>)</td>
+                        <td>O(n<sup>2</sup>)</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr>
+                        <td>Insertion sort</td>
+                        <td>O(n)</td>
+                        <td>O(n<sup>2</sup>)</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr>
+                        <td>Selection sort</td>
+                        <td>O(n)</td>
+                        <td>O(n<sup>2</sup>)</td>
+                        <td>O(n<sup>2</sup>)</td>
+                    </tr>
+                    <tr>
+                        <td>Merge sort</td>
+                        <td>O(n * log(n))</td>
+                        <td>O(n * log(n))</td>
+                        <td>O(n * log(n))</td>
+                    </tr>
+                </table>
+            </details>
+        </article>
+        <article>
+            <details>
+                <summary>Exercise: Sort cities by distance</summary>
+                <img src="images/france-city-distance.jpg" alt="">
+                <h2>Exercise text</h2>
+                <p>
+                    Download the France's cities data which file is available at this link ( <a href="data/laposte_hexasmal.small.csv">small data-set</a> ) (<a href="https://www.data.gouv.fr/fr/datasets/r/554590ab-ae62-40ac-8353-ee75162c05ee">original data-set</a>)  and write an app able to perform the following steps:
+                    <ol>
+                        <!-- <li>implement an algorithms to sort the France's cities in ascending order of distance from a given city. The goal is to propose the fastest possible algorithm.</li> -->
+                        <li>write a function able to read a csv file and organize store data in a data structure.</li>
+                        <li>write a function (haversine) able to calculate the distance in kilometers between two points on the earth.</li>
+                        <li>write a function that takes as input a city's name, and generates as output a list of quartile values. The quartiles values refers to the cities' distances from the city given in the input.
+                            <pre>
+min : 0.82 km pour PARIS 02 (75002)
+premier quartile : 187.15 km pour PONT SUR SAMBRE (59138) 318.88 km pour BELLEFONTAINE (88370) 
+            médiane : 318.88 km pour BELLEFONTAINE (88370)
+troisième quartile : 459.81 km pour QUEYSSAC (24140)
+                max : 9422.32 km pour ST PHILIPPE (97442)
+                            </pre>
+                        </li>
+                    </ol>
+                </p>
+
+                <h2>read and organize csv data</h2>
+                <pre><code class="python">
+# read csv file
+import csv
+                    
+# organize data
+def organize_data():
+    fName = 'laposte_hexasmal.small.csv'
+    with open(fName, newline='') as csvfile:
+    fields = csv.reader(csvfile, delimiter=';')
+    for field in fields:
+        print(field[3], field[4], field[5])
+                </code></pre>
+
+                <h2>haversine function</h2>
+                <pre>
+                    <code class="python">
+# haversine
+from math import radians, cos, sin, asin, sqrt
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance in kilometers between two points 
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+
+    # haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    r = 6371 # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
+    return c * r
+                    </code>
+                </pre>
+            </details>
+        </article>
+    </body>
+    <script>
+        hljs.highlightAll();
+    </script>
+</html>

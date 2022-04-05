@@ -9,13 +9,27 @@ h2 {
     font-size: 1.5em;
 }
 p,
-ul {
+ul,
+ol {
     font-size: 1.3em;
 }
 .ver {
     display: flex;
     flex-direction: column;
     width: 500px;
+}
+
+pre {
+    font-size: 1.3em;
+}
+img.blur {
+    filter: blur(1.9rem);
+    user-select: none;
+}
+
+pre.blur {
+    filter: blur(0.3rem);
+    user-select: none;
 }
 
 td {
@@ -29,3 +43,4 @@ td {
 thead {
     font-weight: bold;
 }
+

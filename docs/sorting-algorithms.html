@@ -60,7 +60,7 @@
                     <var>n − 1 + n − 2 + . . . + 2 + 1 = O(n<sup>2</sup>)</var> for all inputs.
                 </p>
                 <h3>Bubble Sort - Python implementation</h3>
-                <pre class="blur"><code class="python">
+                <pre class=""><code class="python">
 def bubble_sort(nums):
     n = len(nums)
     # Iterate through all array elements
@@ -119,7 +119,7 @@ print(res)
                     <var>T(n) = O(n)</var>.
                 </p>
                 <h2>Insertion sort: Python implementation</h2>
-                <pre class="blur"><code class="python">
+                <pre class=""><code class="python">
 def insertionSort(nums):
     for step in range(1, len(nums)):
         key = nums[step]
@@ -170,7 +170,7 @@ print(res)
                     T(2) = 1. Thus, T(n) = θ(n2).
                 </p>
                 <h3>Selection sort: python implementation</h3>
-                <pre class="blur"><code class="python">
+                <pre class=""><code class="python">
 def selection_sort(array):
     n = len(array)
     for i in range(0, n - 1):
@@ -217,7 +217,7 @@ print(res)
 
                 <div>
                     <h2>Merge sort: python implementation</h2>
-                    <pre class="blur">
+                    <pre class="">
                         <code class="python">
 def merge(list_1, list_2):
     merged = []
@@ -315,7 +315,7 @@ print(res)
         </article>
         <article>
             <details>
-                <summary>Exercise: Sort cities by distance</summary>
+                <summary>Project 1: Sort cities by distance</summary>
                 <img src="images/france-city-distance.jpg" alt="">
                 <h2>Exercise text</h2>
                 <p>
@@ -347,6 +347,7 @@ def organize_data():
     with open(fName, newline='') as csvfile:
     fields = csv.reader(csvfile, delimiter=';')
     for field in fields:
+        // complete
         print(field[3], field[4], field[5])
                 </code></pre>
 

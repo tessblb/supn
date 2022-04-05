@@ -20,7 +20,7 @@ def mergeSort(x):
     result = []
     if len(x) < 2:
         return x
-    mid = int(len(x)/2)
+    mid = len(x) // 2
     y = mergeSort(x[:mid])
     z = mergeSort(x[mid:])
     while (len(y) > 0) or (len(z) > 0):

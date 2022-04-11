@@ -9,4 +9,4 @@ jobs:
       - name: City Distance Test
         uses: cclauss/GitHub-Action-for-pytest@master
         with:
-          args: python setup.py develop && pytest __tests__/test_cities-distance.py -vs
+          args: python setup.py develop && pytest __tests__/test_add.py -vs

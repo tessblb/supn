@@ -1,0 +1,12 @@
+on: push
+name: on push
+jobs:
+  gitHubActionForPytest:
+    name: City Distance Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: City Distance Test
+        uses: cclauss/GitHub-Action-for-pytest@master
+        with:
+          args: python setup.py develop && pytest -vs

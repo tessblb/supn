@@ -2,11 +2,11 @@ on: push
 name: on push
 jobs:
   gitHubActionForPytest:
-    name: City Distance Test
+    name: Add Function Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: City Distance Test
+      - name: Add Function Test
         uses: cclauss/GitHub-Action-for-pytest@master
         with:
           args: python setup.py develop && pytest __tests__/test_add.py -vs

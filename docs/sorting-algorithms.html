@@ -188,7 +188,7 @@ print(res)
 </code></pre>
             </details>
         </article>
-        <article id="merge-sort">
+        <article id="counting-sort">
             <details>
                 <summary>Merge Sort</summary>
                 <p>
@@ -258,6 +258,52 @@ print(res)
             </details>
         </article>
 
+        <article id="counting-sort">
+            <details>
+                <summary>Counting Sort</summary>
+                <!-- https://www.programiz.com/dsa/counting-sort#:~:text=Counting%20sort%20is%20a%20sorting,index%20of%20the%20auxiliary%20array. -->
+                <h2>Counting Sort Definition</h2>
+                <p>
+                    In computer science, counting sort is an algorithm used to sort the elements of a list (array) by counting and storing the frequency of each distinct element in an auxiliary array. Sorting is done by mapping the value of each element as an index of the auxiliary array.
+                </p>
+                <h2>Example</h2>
+                <p></p>
+                <ol>
+                    <li>Consider data in range of min to max (min and max are two integers);</li>
+                    <li>Create a count array to store the count of each unique number;</li>
+                    <li>Count each element in the given array and place the count at the appropriate index;</li>
+                    <li>Modify the count array by adding the previous count
+                    </li>
+                    <li>Create an array with n places (n is the number of inputs);</li>
+                    <li>Place the numbers on their correct position and decrease the count by one;</li>
+                    <li>Place the numbers on their correct position and decrease the count by one.</li>
+                </ol>
+                <image>
+                    <img class="size-l" src="./images/sorting-al-ex-1.jpg" alt="">
+                    <figcaption>Fig.1
+                    </figcaption> 
+                </image>
+                 <p></p>
+                <image>
+                    <img class="size-l" src="./images/sorting-al-ex-2.jpg" alt="">
+                    <figcaption>Fig.2</figcaption> 
+                </image>
+                <div>
+                    <h2>Counting sort: python implementation</h2>
+                        <pre class="">
+                            <code class="python">
+smoe code
+                            </code>
+                        </pre>
+                </div>
+                <div>
+                    <h2>Couting Sort: Run-time Analysis</h2>
+                    <p>Counting sort runs in O(n) time, making it asymptotically faster than sorting algorithms like merge sort.</p>
+                    <p>Counting sort only works when the range of potential items in the input is known ahead of time.</p>
+                    <p> If the range of potential values is big, then counting sort requires a lot of space (more than O(n)).</p>
+                </div>
+            </details>
+        </article>
         <!-- <section id="quick-sort">
             <h1>Quick Sort</h1>
             <p>
@@ -277,6 +323,7 @@ print(res)
         <article>
             <details>
                 <summary>Run-time Analysis Summary</summary>
+                <p></p>
                 <table>
                     <thead>
                         <tr>
@@ -310,10 +357,16 @@ print(res)
                         <td>O(n * log(n))</td>
                         <td>O(n * log(n))</td>
                     </tr>
+                    <tr>
+                        <td>Couting sort</td>
+                        <td>O(n)</td>
+                        <td>O(n)</td>
+                        <td>O(n)</td>
+                    </tr>
                 </table>
             </details>
         </article>
-        <article>
+        <article id="project-td2">
             <details>
                 <summary>Project 1: Sort cities by distance</summary>
                 <img src="images/france-city-distance.jpg" alt="">
@@ -324,13 +377,13 @@ print(res)
                         <!-- <li>implement an algorithms to sort the France's cities in ascending order of distance from a given city. The goal is to propose the fastest possible algorithm.</li> -->
                         <li>write a function able to read a csv file and organize store data in a data structure.</li>
                         <li>write a function (haversine) able to calculate the distance in kilometers between two points on the earth.</li>
-                        <li>write a function that takes as input a city's name, and generates as output a list of quartile values. The quartiles values refers to the cities' distances from the city given in the input.
+                        <li>write a function that takes as input a city's name, and generates as output a list of quartile values. The quartile values refer to the cities' distances from the city passed as an input.</li> 
                             <pre>
 min : 0.82 km pour PARIS 02 (75002)
 premier quartile : 187.15 km pour PONT SUR SAMBRE (59138) 318.88 km pour BELLEFONTAINE (88370) 
-            médiane : 318.88 km pour BELLEFONTAINE (88370)
+médiane : 318.88 km pour BELLEFONTAINE (88370)
 troisième quartile : 459.81 km pour QUEYSSAC (24140)
-                max : 9422.32 km pour ST PHILIPPE (97442)
+max : 9422.32 km pour ST PHILIPPE (97442)
                             </pre>
                         </li>
                     </ol>

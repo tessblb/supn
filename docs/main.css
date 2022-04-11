@@ -27,9 +27,17 @@ img.blur {
     user-select: none;
 }
 
+img.size-l {
+    width: 90%;
+}
+
 pre.blur {
     filter: blur(0.3rem);
     user-select: none;
+}
+
+table {
+    border-collapse: collapse;
 }
 
 td {

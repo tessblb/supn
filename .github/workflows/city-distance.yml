@@ -1,5 +1,6 @@
 name: test:city-distance-application
-on: push
+on:
+  workflow_dispatch:
 jobs:
   gitHubActionForPytest:
     name: City Distance Application

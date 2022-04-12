@@ -1,5 +1,6 @@
 name: test:add-function
-on: push
+on:
+  workflow_dispatch:
 jobs:
   gitHubActionForPytest:
     name: Add Function Test

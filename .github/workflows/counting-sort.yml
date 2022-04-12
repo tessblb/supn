@@ -1,5 +1,7 @@
 name: test:couting-sort-algorithm
-on: push
+on:
+  workflow_dispatch:
+
 jobs:
   gitHubActionForPytest:
     name: Couting Sort Test

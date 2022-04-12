@@ -2,11 +2,11 @@ on: push
 name: on push
 jobs:
   gitHubActionForPytest:
-    name: City Distance Application
+    name: City Distance Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Test City Distance Application
+      - name: Test Counting Sort Algorithm
         uses: cclauss/GitHub-Action-for-pytest@master
         with:
-          args: python setup.py develop && pytest __tests__/test_cities-distance.py -vs
+          args: python setup.py develop && pytest __tests__/test_counting_sort.py -vs

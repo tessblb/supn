@@ -1,5 +1,5 @@
+name: test:couting-sort-algorithm
 on: push
-name: on push
 jobs:
   gitHubActionForPytest:
     name: Couting Sort Test

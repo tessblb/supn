@@ -1,5 +1,5 @@
+name: test:add-function
 on: push
-name: on push
 jobs:
   gitHubActionForPytest:
     name: Add Function Test

@@ -1,5 +1,5 @@
+name: test:city-distance-application
 on: push
-name: on push
 jobs:
   gitHubActionForPytest:
     name: City Distance Application

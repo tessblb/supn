@@ -61,9 +61,19 @@ def get_furthest_city(distances):
     return distances_list[-1]
 
 
-def get_median_city(distances):
+def get_q2_city(distances):
     distances_list = list(distances)
     return distances_list[len(distances_list) // 2]
+
+
+def get_q1_city(distances):
+    distances_list = list(distances)
+    return distances_list[len(distances_list) * 1 // 4]
+
+
+def get_q3_city(distances):
+    distances_list = list(distances)
+    return distances_list[len(distances_list) * 3 // 4]
 
 
 distances = get_distances_from('ALLAN')
@@ -78,5 +88,5 @@ print(nearest_city)
 furthest_city = get_furthest_city(distancesSorted)
 print(furthest_city)
 
-median_city = get_median_city(distancesSorted)
-print(median_city)
+q1_city = get_q1_city(distancesSorted)
+print(q1_city)

@@ -43,37 +43,32 @@ def get_distances_from(city):
     lonLat_1 = city_dict[city]
     for city in city_dict:
         lonLat_2 = city_dict[city]
-        city_distances[city] = get_distance(lonLat_1, lonLat_2)
+        city_distances[city] = 0  # complete the code
     return city_distances
 
 
 def get_sorted_distance(distances):
-    return {k: v for k, v in sorted(distances.items(), key=lambda item: item[1])}
+    pass
 
 
 def get_nearest_city(distances):
-    distances_list = list(distances)
-    return distances_list[1]
+    pass
 
 
 def get_furthest_city(distances):
-    distances_list = list(distances)
-    return distances_list[-1]
+    pass
 
 
 def get_q2_city(distances):
-    distances_list = list(distances)
-    return distances_list[len(distances_list) // 2]
+    pass
 
 
 def get_q1_city(distances):
-    distances_list = list(distances)
-    return distances_list[len(distances_list) * 1 // 4]
+    pass
 
 
 def get_q3_city(distances):
-    distances_list = list(distances)
-    return distances_list[len(distances_list) * 3 // 4]
+    pass
 
 
 distances = get_distances_from('ALLAN')

@@ -29,8 +29,7 @@ def get_distance(lonLat_1, lonLat_2):
         radians, [float(lon1), float(lat1), float(lon2), float(lat2)])
 
     # haversine formula
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
+    dlon, dlat = lon2 - lon1, lat2 - lat1
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
     c = 2 * asin(sqrt(a))
     # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
@@ -49,8 +48,45 @@ def get_distances_from(city):
 
 
 def get_sorted_distance(distances):
-    pass
+    return {k: v for k, v in sorted(distances.items(), key=lambda item: item[1])}
 
 
-res = get_distances_from('ALLAN')
-print(res)
+def get_nearest_city(distances):
+    distances_list = list(distances)
+    return distances_list[1]
+
+
+def get_furthest_city(distances):
+    distances_list = list(distances)
+    return distances_list[-1]
+
+
+def get_q2_city(distances):
+    distances_list = list(distances)
+    return distances_list[len(distances_list) // 2]
+
+
+def get_q1_city(distances):
+    distances_list = list(distances)
+    return distances_list[len(distances_list) * 1 // 4]
+
+
+def get_q3_city(distances):
+    distances_list = list(distances)
+    return distances_list[len(distances_list) * 3 // 4]
+
+
+distances = get_distances_from('ALLAN')
+print(distances)
+
+distancesSorted = get_sorted_distance(distances)
+print(distancesSorted)
+
+nearest_city = get_nearest_city(distancesSorted)
+print(nearest_city)
+
+furthest_city = get_furthest_city(distancesSorted)
+print(furthest_city)
+
+q1_city = get_q1_city(distancesSorted)
+print(q1_city)

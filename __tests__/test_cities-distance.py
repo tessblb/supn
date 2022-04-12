@@ -1,5 +1,5 @@
 import pytest
-from projects.cities_distance import get_raw_data, get_city_dict, get_distance
+from projects.cities_distance import *
 
 
 @pytest.mark.parametrize('url', [
@@ -32,3 +32,36 @@ def test_get_distance(lonLat_1, lonLat_2, result):
     print(
         f"\n** Actual result {round(distance, 2)} km, Expected result {round(distance, 2)}km ±1 km")
     assert distance > result - 1 and distance < result + 1
+
+
+@pytest.mark.parametrize('city', [
+    ("ALLAN"),
+])
+def test_get_distances_from(city):
+    distances_from = get_distances_from(city)
+    print(f"\n**Distances_from {city}:\n {distances_from} ")
+    assert type(distances_from) == dict
+    assert distances_from['ARNAYON'] < distances_from['AULAN']
+
+
+@pytest.mark.parametrize('city', [
+    ("ALLAN"),
+])
+def test_get_sorted_distance(city):
+    distances_from = get_distances_from(city)
+    sorted_distance = get_sorted_distance(distances_from)
+    city_list = list(sorted_distance)
+    assert type(sorted_distance) == dict
+    assert sorted_distance[city_list[1]] < sorted_distance[city_list[2]]
+    assert sorted_distance[city_list[-2]] < sorted_distance[city_list[-1]]
+
+
+@pytest.mark.parametrize('city, expected', [
+    ("ALLAN", "CHATEAUNEUF DU RHONE"),
+])
+def test_get_nearest_city(city, expected):
+    distances_from = get_distances_from(city)
+    sorted_distance = get_sorted_distance(distances_from)
+    nearest_city = get_nearest_city(sorted_distance)
+    assert type(sorted_distance) == dict
+    assert nearest_city == expected

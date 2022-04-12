@@ -1,0 +1,12 @@
+name: test:couting-sort-algorithm
+on: push
+jobs:
+  gitHubActionForPytest:
+    name: Couting Sort Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Test Counting Sort Algorithm
+        uses: cclauss/GitHub-Action-for-pytest@master
+        with:
+          args: python setup.py develop && pytest __tests__/test_counting_sort.py -vs
